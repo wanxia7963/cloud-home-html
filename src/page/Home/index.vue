@@ -1,6 +1,6 @@
 <template>
     <div class="Home-Page">
-        <HeaderNavigation :anchor="homeAnchor"></HeaderNavigation>
+        <HeaderNavigation :anchor="homeAnchor" @toAnchorByOffsetTop="toAchar"></HeaderNavigation>
         <div ref="one" class="Home-Page-div Home-Page-first">
             <div class="Home-Page-first-content">
                 <div class="left animated fadeInLeft">
@@ -13,37 +13,37 @@
                     <div class="left-content three">
                         <div class="three-erweima-img">
                             <img src="../../img/code.png" alt="">
-                            <img style="margin-left:35px;" src="../../img/1(1).png" alt="">
+                            <img style="margin-left:35px;width:240px;" src="../../img/1(1).png" alt="">
                         </div>
                     </div>
                     <div class="left-content four">
                         <div class="four-download-img">
-                            <img style="margin-right:20px;" src="../../img/1.png" alt="">
-                            <img src="../../img/2.png" alt="">
+                            <img @mouseover="mouseAndroid()" @mouseout="mouseoutAndroid()" style="margin-right:20px;" :src="androidUrl" alt="">
+                            <img @mouseover="mouseIos()" @mouseout="mouseoutIos()" :src="iosUrl" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="right animated fadeInRight">
-                    <img src="../../img/phone.png" alt="">
+                    <img style="width:590px;margin-left:70px;" src="../../img/phone.png" alt="">
                 </div>
             </div>
         </div>
         <div ref="two" class="Home-Page-div Home-Page-second">
             <div class="Home-Page-second-content">
                 <div ref="secondTitle" class="sloganeer">
-                   <img  v-show="secondTitleShow" class="animated slideInLeft" src="../../img/ys.png" alt="">
+                   <img  v-show="secondTitleShow" class="animated fadeInUp" src="../../img/ys.png" alt="">
                 </div>
                 <div class="card" ref="secondCard">
-                    <div v-show="secondCardShow" class="card-content animated slideInUp">
+                    <div v-show="secondCardShow" @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
                         <div class="card-content-img">
-                            <img  class="card-img" src="../../img/Group 2(2).png" alt="">
+                            <img id="imgs"  class="card-img" src="../../img/Group 2(2).png" alt="">
                             <span class="card-img-title">购物省钱</span>
                         </div>
                         <span class="card-content-desc">
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed,
                         </span>
                     </div>
-                    <div  v-show="secondCardShow" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2(1).png" alt="">
                             <span class="card-img-title">闲置赚钱</span>
@@ -52,7 +52,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed, 
                         </span>
                     </div>
-                    <div  v-show="secondCardShow" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2.png" alt="">
                             <span class="card-img-title">商家推广</span>
@@ -61,7 +61,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed, 
                         </span>
                     </div>
-                    <div  v-show="secondCardShow" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2 Copy 3.png" alt="">
                             <span class="card-img-title">团队提成</span>
@@ -76,7 +76,7 @@
         <div ref="three" class="Home-Page-div Home-Page-third">
             <div class="Home-Page-third-content">
                 <div ref="thirdTitle"  class="sloganeer ">
-                   <img v-show="thirdTitleShow" class="animated slideInRight" src="../../img/商家入驻.png" alt="">
+                   <img v-show="thirdTitleShow" class="animated fadeInUp" src="../../img/商家入驻.png" alt="">
                 </div>
                 <div class="merit">
                     <div ref="thirdBgImg" class="meritBackground">
@@ -139,7 +139,7 @@
                             <span class="fourth-top-desc">邻家社区随时随地畅快聊天，结交四海之内的知心朋友～</span>
                         </div>
                         <div class="fourth-right-mid">
-                            <img src="../../img/undraw_experts3_3njd.png" alt="">
+                            <img style="width:590px" src="../../img/undraw_experts3_3njd.png" alt="">
                         </div>
                         <div class="fourth-right-bot">
                             <div class="fourth-bot-slogan">
@@ -158,31 +158,32 @@
         <div ref="five" class="Home-Page-div Home-Page-fifth">
             <div class="Home-Page-fifth-top">
                 <div ref="fifthTitle" class="sloganeer" style="margin-top:45px">
-                   <img v-show="fifthTitleShow" class="animated slideInRight" src="../../img/闲置动起来.png" alt="">
+                   <img v-show="fifthTitleShow" class="animated fadeInUp" src="../../img/闲置动起来.png" alt="">
                 </div>
-                <div ref="fifthSkip" v-show="fifthTitleShow"  class="skip-container animated slideInDown">
+                <div class="skip-container">
                     <div @mouseover="selectTimer(0)"  class="fifth-skip" :class="current === 0 ? 'fifth-skip active':'fifth-skip'">
-                        <img v-if="current === 0" src="../../img/flag1.png" alt="">
+                        <img v-if="current == 0" src="../../img/flag1.png" alt="">
                         <img v-else src="../../img/flag.png" alt="">
                         <span class="skip-title">丰富物品</span>
                     </div>
                     <div @mouseover="selectTimer(1)"  class="fifth-skip" :class="current === 1 ? 'fifth-skip active':'fifth-skip'">
-                        <img v-if="current === 1" src="../../img/computer1.png" alt="">
+                        <img v-if="current == 1" src="../../img/computer1.png" alt="">
                         <img v-else src="../../img/computer.png" alt="">
                         <span class="skip-title">交易安全</span>
                     </div>
                     <div @mouseover="selectTimer(2)"  class="fifth-skip" :class="current === 2 ? 'fifth-skip active':'fifth-skip'">
-                        <img v-if="current === 2" src="../../img/harddisk1.png" alt="">
+                        <img v-if="current == 2" src="../../img/harddisk1.png" alt="">
                         <img v-else src="../../img/harddisk.png" alt="">
                         <span class="skip-title">买卖舒心</span>
                     </div>
                 </div>
             </div>
-            <div ref="fifthSlide" class="Home-Page-third-bot">
-                <div v-show="fifthSlideShow"  class="third-bot-content animated slideInRight">
+            
+            <div  class="Home-Page-third-bot">
+                <div v-if="current === 0" class="third-bot-content">
                     <div class="third-bot-content-left">
                         <div class="one">
-                            <span>各类物品，满足需求</span>
+                            <span>各类物品，满足需求1</span>
                         </div>
                         <div  class="two">
                             <span>SEE = Seeking Experience & Engineering，意为探索用户体验与工程实践，</span>
@@ -214,7 +215,83 @@
                         </div>
                     </div>
                     <div class="third-bot-content-right">
-                        <img src="../../img/analysischart.png" alt="">
+                        <img  src="../../img/analysischart.png" alt="">
+                    </div>
+                </div>
+                <div v-if="current === 1" class="third-bot-content">
+                    <div class="third-bot-content-left">
+                        <div class="one">
+                            <span>各类物品，满足需求2</span>
+                        </div>
+                        <div  class="two">
+                            <span>SEE = Seeking Experience & Engineering，意为探索用户体验与工程实践，</span>
+                            <span style="margin-top:10px;">SEE = Seeking Experience & Engineering，意为探索用户体验与工程实践，</span>
+                        </div>
+                        <div  class="three">
+                            <img src="../../img/位图(1).png" alt="">
+                            <div class="three-desc">
+                                <span class="four-desc-title">邻家平台</span>
+                                <div class="four-desc-ms">
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="four">
+                            <img src="../../img/位图(1).png" alt="">
+                            <div class="four-desc">
+                                <span class="four-desc-title">邻家平台</span>
+                                <div class="four-desc-ms">
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="third-bot-content-right">
+                        <img  src="../../img/analysischart.png" alt="">
+                    </div>
+                </div>
+                <div v-if="current === 2" class="third-bot-content">
+                    <div class="third-bot-content-left">
+                        <div class="one">
+                            <span>各类物品，满足需求3</span>
+                        </div>
+                        <div  class="two">
+                            <span>SEE = Seeking Experience & Engineering，意为探索用户体验与工程实践，</span>
+                            <span style="margin-top:10px;">SEE = Seeking Experience & Engineering，意为探索用户体验与工程实践，</span>
+                        </div>
+                        <div  class="three">
+                            <img src="../../img/位图(1).png" alt="">
+                            <div class="three-desc">
+                                <span class="four-desc-title">邻家平台</span>
+                                <div class="four-desc-ms">
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="four">
+                            <img src="../../img/位图(1).png" alt="">
+                            <div class="four-desc">
+                                <span class="four-desc-title">邻家平台</span>
+                                <div class="four-desc-ms">
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                    <span>邻家平台各类物品满足不同人群的需求</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="third-bot-content-right">
+                        <img  src="../../img/analysischart.png" alt="">
                     </div>
                 </div>
             </div>
@@ -222,7 +299,7 @@
         <div ref="six" class="Home-Page-div Home-Page-sixth">
             <div class="sixth-content">
                 <div ref="sixthTitle" class="sloganeer">
-                   <img v-show="sixthTitleShow" class="animated slideInLeft" src="../../img/bt.png" alt="">
+                   <img v-show="sixthTitleShow" class="animated fadeInUp" src="../../img/bt.png" alt="">
                 </div>
                 <div ref="sixthCard" class="sixth-card">
                     <div v-show="sixthCardShow" @mouseover="mouseCard(0)" class="sixth-card-content animated slideInUp" :class="currentCard === 0 ? 'sixth-card-content animated slideInUp active':'sixth-card-content animated slideInUp'">
@@ -323,12 +400,17 @@
 </template>
 <script>
 import HeaderNavigation from '@/components/HeaderNavigation'
+import android_no from '../../img/android1.png'
+import android from '../../img/android.png'
+
+import ios_no from '../../img/ios1.png'
+import ios from '../../img/ios.png'
+import $ from 'jquery'
 export default {
     name:'home',
     components:{
         HeaderNavigation
     },
-    
     data(){
         return{
             secondCardShow: false,
@@ -345,18 +427,30 @@ export default {
             sixthTitleShow:false,
             sixthCardShow:false,
             activeStyle: false,
+
             current: 0,
             currentCard:0,
-            homeAnchor:1
+
+            homeAnchor:1,
+
+            androidUrl: android_no,
+            iosUrl: ios_no
         }
     },
     mounted(){
-       
         window.addEventListener('scroll',this.handleScroll)
     },
     methods:{
         handleScroll(){
             let _this = this;
+            let refArrayAchar = [
+                {ref:'one',index: 1},
+                {ref:'two',index: 2},
+                {ref:'three',index: 3},
+                {ref:'four',index: 4},
+                {ref:'five',index: 5},
+                {ref:'six',index: 6}
+            ]
             let refArray = [
                 {ref:'secondTitle',show:'secondTitleShow'},
                 {ref:'secondCard',show:'secondCardShow'},
@@ -378,7 +472,9 @@ export default {
                     // window.console.log(r.ref)
                 })
             })
-            _this.setAnchor()
+            refArrayAchar.forEach((r)=>{
+                this.setAnchor(r.ref,r.index)
+            })
         },
         gdjz(div,offset,callback){
             let dom = this.$refs[div]
@@ -400,14 +496,75 @@ export default {
         mouseCard(index){
             this.currentCard = index;
         },
-        setAnchor(){
-            let refArray = [{ref:'one'},{ref:'two'},{ref:'three'},{ref:'four'},{ref:'five'},{ref:'six'}]
-            refArray.forEach((r)=>{
-                let a,b;
-                a =  this.refs[r.ref].offsetTop
-                b = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-                window.console.log("achar: "+a+" "+b)
-            })
+        setAnchor(div,index){
+            let dom = this.$refs[div]
+            if(dom){
+                var a,b;
+                a =  dom.offsetTop
+                b = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop //  获取窗口滚动条高度
+                // window.console.log("achar: "+a+" "+b)
+                if((b + 100) >= a){
+                   this.homeAnchor = index
+                }
+            }
+        },
+        toAchar(index){
+            switch(index) {
+                case 1: 
+                    window.scrollTo({
+                        top:this.$refs['one'].offsetTop,
+                        behavior:'smooth'
+                    });break;
+                case 2: 
+                    window.scrollTo({
+                        top:this.$refs['two'].offsetTop - 100,
+                        behavior:'smooth'
+                    });break;
+                case 3: 
+                    window.scrollTo({
+                        top:this.$refs['three'].offsetTop - 100,
+                        behavior:'smooth'
+                    });break;
+                case 4: 
+                    window.scrollTo({
+                        top:this.$refs['four'].offsetTop - 100,
+                        behavior:'smooth'
+                    });break;
+                case 5: 
+                    window.scrollTo({
+                        top:this.$refs['five'].offsetTop - 100,
+                        behavior:'smooth'
+                    });break;
+                case 6: 
+                    window.scrollTo({
+                        top:this.$refs['six'].offsetTop - 100,
+                        behavior:'smooth'
+                    });break;
+                default:break;
+            }
+        },
+
+        mouseAndroid(){
+           this.androidUrl = android;
+        },
+        mouseoutAndroid(){
+            this.androidUrl = android_no;
+        },
+
+        mouseIos(){
+           this.iosUrl = ios;
+        },
+        mouseoutIos(){
+           this.iosUrl = ios_no;
+        },
+
+        mousesecondCard(e){
+            e.stopPropagation();
+           $(e.target).addClass('active')
+        },
+        mouseoutsecondCard(e){
+            e.stopPropagation();
+            $(e.target).removeClass('active')
         }
     },
     destroyed () {
@@ -415,13 +572,14 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
+.animated {animation-duration: 2s;}
 .Home-Page-first{
     background-image: url('../../img/background/bg.png');
     background-repeat:no-repeat;
     background-size:cover;
     width:100%;
-    height: 930px; 
+    height: 968px; 
 }
 .Home-Page-first-content{
     padding-top: 222px;
@@ -456,7 +614,7 @@ export default {
     font-weight:500;
     color:rgba(46,115,255,1);
     line-height:20px;
-    letter-spacing:1px;
+    letter-spacing:5px;
 }
 .left .three,.left .four{
     margin-top: 40px;
@@ -471,6 +629,9 @@ export default {
     display: flex;
     align-items: flex-start;
     
+}
+.left .four .four-download-img img{
+     cursor:pointer;
 }
 .Home-Page-second{
     width: 100%;
@@ -496,10 +657,8 @@ export default {
 .card .card-content{
     width: 285px;
     height: 496px;
-    margin-right: 20px;
+    margin-right: 18px;
     background:rgba(255,255,255,1);
-    box-shadow:0px 10px 50px 0px rgba(0,0,0,0.05);
-    border:1px solid rgba(219,219,219,1);
     display: flex;
     flex-direction: column;
 }
@@ -508,6 +667,11 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 71px;
+}
+.Home-Page-second-content .card .active{
+
+    box-shadow:0px 10px 50px 0px rgba(0,0,0,0.05);
+    border:1px solid rgba(219,219,219,1);
 }
 .card-img-title{
     font-size:25px;
@@ -597,7 +761,7 @@ export default {
 }
 .Home-Page-fourth{
     width: 100%;
-    height: 900px;
+    height: 868px;
     background-image: url('../../img/background/mengban.png');
     background-repeat:no-repeat;
     background-size:cover;
@@ -697,7 +861,7 @@ export default {
 }
 .skip-container .active .skip-title{
     font-size:20px;
-    color:rgba(255,255,255,0.7) !important;
+    color:rgba(255,255,255) !important;
     line-height:28px;
 }
 .Home-Page-third-bot{
@@ -763,7 +927,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin-top: 107px;
+    margin-top: 80px;
 }
 .four-desc{
     display: flex;
@@ -772,7 +936,7 @@ export default {
 }
 .Home-Page-sixth{
     width: 100%;
-    height: 728px;
+    height: 900px;
     padding-top: 67px;
     background:rgba(250,250,250,1);
 
@@ -827,7 +991,6 @@ export default {
     color:rgba(255,255,255,0.5);
 }
 .Home-Page-seventh{
-    margin-top: 60px;
     width: 100%;
     height: 300px;
     background: #333333;

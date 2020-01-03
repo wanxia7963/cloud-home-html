@@ -7,22 +7,22 @@
         </div>
         <div class="Header-Navigation">
             <div class="Header-Navigation-title" :class="anchor == 1? 'Header-Navigation-title active' : 'Header-Navigation-title'"   >
-                <span @click="toAnchor()">首页</span>
+                <span @click="toAnchor(1)">首页</span>
             </div>
             <div class="Header-Navigation-title" :class="anchor == 2? 'Header-Navigation-title active' : 'Header-Navigation-title'"   >
-                <span>邻家优势</span>
+                <span @click="toAnchor(2)">邻家优势</span>
             </div>
             <div class="Header-Navigation-title" :class="anchor == 3? 'Header-Navigation-title active' : 'Header-Navigation-title'"   >
-                <span>商家入驻</span>
+                <span @click="toAnchor(3)">商家入驻</span>
             </div>
             <div class="Header-Navigation-title" :class="anchor == 4? 'Header-Navigation-title active' : 'Header-Navigation-title'"   >
-                <span>邻友社区</span>
+                <span @click="toAnchor(4)">邻友社区</span>
             </div>
             <div class="Header-Navigation-title" :class="anchor == 5? 'Header-Navigation-title active' : 'Header-Navigation-title'"   >
-                <span>闲置处理</span>
+                <span @click="toAnchor(5)">闲置处理</span>
             </div>
             <div class="Header-Navigation-title last" :class="anchor == 6? 'Header-Navigation-title last active' : 'Header-Navigation-title last'"   >
-                <span>用户权益</span>
+                <span @click="toAnchor(6)">用户权益</span>
             </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
         }
     },
     props:[
-        'anchor'
+        'anchor',
     ],
     mounted(){
         
@@ -55,8 +55,9 @@ export default {
                 this.nav = false
             }
         },
-        toAnchor(){
-
+        toAnchor(index){
+            window.console.log(index)
+            this.$emit('toAnchorByOffsetTop',index)
         }
     }
 }
@@ -71,9 +72,13 @@ export default {
     text-align: center;
     display: flex;
     justify-content: center;
+    transition-property:background;
+    transition-duration:0.s;
 }
 .bg{
     background: #212121;
+    transition-property:background;
+    transition-duration:0.2s;
 }
 #HeaderNavigation .Header{
     width: 1200px;
