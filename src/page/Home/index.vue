@@ -4,8 +4,8 @@
         <div ref="one" class="Home-Page-div Home-Page-first">
             <canvas id="canvas" width="1950px" height="968px;"></canvas>
             <canvas id="canvasbg" width="1950px" height="968px"></canvas>
-            <div class="Home-Page-first-content">
-                    <div class="left animated fadeInLeft">
+            <div ref="firstTitle" class="Home-Page-first-content">
+                    <div v-show="firstTitleShow" class="left animated fadeInLeft">
                         <div class="left-content one">
                             <span class="title">邻家平台APP</span>
                         </div>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="right animated fadeInRight">
+                    <div v-show="firstTitleShow" class="right animated fadeInRight">
                         <img style="width:590px;margin-left:70px;" src="../../img/phone.png" alt="">
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                    <img  v-show="secondTitleShow" class="animated fadeInUp" src="../../img/ys.png" alt="">
                 </div>
                 <div class="card" ref="secondCard">
-                    <div v-show="secondCardShow" @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
+                    <div v-show="secondCardShow" @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated fadeInUp">
                         <div class="card-content-img">
                             <img id="imgs"  class="card-img" src="../../img/Group 2(2).png" alt="">
                             <span class="card-img-title">购物省钱</span>
@@ -46,7 +46,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed,
                         </span>
                     </div>
-                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated fadeInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2(1).png" alt="">
                             <span class="card-img-title">闲置赚钱</span>
@@ -55,7 +55,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed, 
                         </span>
                     </div>
-                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated fadeInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2.png" alt="">
                             <span class="card-img-title">商家推广</span>
@@ -64,7 +64,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed, 
                         </span>
                     </div>
-                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated slideInUp">
+                    <div  v-show="secondCardShow"  @mouseenter="mousesecondCard($event)" @mouseleave="mouseoutsecondCard($event)" class="card-content animated fadeInUp">
                         <div class="card-content-img">
                             <img  class="card-img" src="../../img/Group 2 Copy 3.png" alt="">
                             <span class="card-img-title">团队提成</span>
@@ -83,12 +83,12 @@
                 </div>
                 <div class="merit">
                     <div ref="thirdBgImg" class="meritBackground">
-                        <img v-show="thirdBgImgShow" class="merit-bg animated slideInUp"  src="../../img/041f6d5f3e0fc445b0a4f1e752d33c83.png" alt="">
+                        <img v-show="thirdBgImgShow" class="merit-bg animated fadeInUp"  src="../../img/041f6d5f3e0fc445b0a4f1e752d33c83.png" alt="">
                     </div>
                     
                     <div class="merit-content">
                         <div ref="thirdDescOne" class="merit-content-top">
-                            <div v-show="thirdDescOneShow" class="merit-desc animated slideInLeft">
+                            <div v-show="thirdDescOneShow" class="merit-desc animated fadeInLeft">
                                 <img class="merit-img" src="../../img/merit/1.png" alt="">
                                 <div class="desc">
                                     <div class="desc-title">
@@ -101,7 +101,7 @@
                         </div>
                         <div class="merit-content-bottom">
                             <div ref="thirdDescTwo">
-                                <div v-show="thirdDescOneShow"   class="merit-desc animated slideInLeft">
+                                <div v-show="thirdDescOneShow"   class="merit-desc animated fadeInLeft">
                                     <img class="merit-img" src="../../img/merit/2.png" alt="">
                                     <div class="desc">
                                         <div class="desc-title">
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                             <div ref="thirdDescThree">
-                                <div v-show="thirdDescOneShow"  class="merit-desc animated slideInRight">
+                                <div v-show="thirdDescOneShow"  class="merit-desc animated fadeInLeft">
                                     <img class="merit-img" src="../../img/merit/3.png" alt="">
                                     <div class="desc">
                                         <div class="desc-title">
@@ -133,10 +133,10 @@
             <img style="position:absolute" src="../../img/background/chat.png" alt="">
             <div class="fourth-content">
                 <div ref="fourthLeftImg" class="fourth-content-left">
-                    <img v-show="fourthLeftImgShow" class="animated slideInLeft" src="../../img/chat.png" alt="">
+                    <img v-show="fourthLeftImgShow" class="animated fadeInLeft" src="../../img/chat.png" alt="">
                 </div>
                 <div ref="fourthRightChat" class="fourth-content-right">
-                    <div v-show="fourthRightChatShow" class="animated slideInRight">
+                    <div v-show="fourthRightChatShow" class="animated fadeInRight">
                         <div class="fourth-right-top">
                             <span class="fourth-top-title">邻家社区随时随地畅快聊天</span>
                             <span class="fourth-top-desc">邻家社区随时随地畅快聊天，结交四海之内的知心朋友～</span>
@@ -160,7 +160,7 @@
         </div>
         <div ref="five" class="Home-Page-div Home-Page-fifth">
             <div class="Home-Page-fifth-top">
-                <div ref="fifthTitle" class="sloganeer" style="margin-top:45px">
+                <div ref="fifthTitle" class="sloganeer" style="margin-top:45px;">
                    <img v-show="fifthTitleShow" class="animated fadeInUp" src="../../img/闲置动起来.png" alt="">
                 </div>
                 <div class="skip-container">
@@ -305,7 +305,7 @@
                    <img v-show="sixthTitleShow" class="animated fadeInUp" src="../../img/bt.png" alt="">
                 </div>
                 <div ref="sixthCard" class="sixth-card">
-                    <div v-show="sixthCardShow" @mouseover="mouseCard(0)" class="sixth-card-content animated slideInUp" :class="currentCard === 0 ? 'sixth-card-content animated slideInUp active':'sixth-card-content animated slideInUp'">
+                    <div v-show="sixthCardShow" @mouseover="mouseCard(0)" class="sixth-card-content animated fadeInUp" :class="currentCard === 0 ? 'sixth-card-content animated fadeInUp active':'sixth-card-content animated fadeInUp'">
                         <div class="sixth-card-content-img">
                             <img v-if="currentCard === 0"  class="sixth-card-img" src="../../img/无网状态备份1.png" alt="">
                             <img v-else class="sixth-card-img" src="../../img/无网状态备份(1).png" alt="">
@@ -315,7 +315,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed,
                         </span>
                     </div>
-                   <div v-show="sixthCardShow" @mouseover="mouseCard(1)" class="sixth-card-content animated slideInUp" :class="currentCard === 1 ? 'sixth-card-content animated slideInUp active':'sixth-card-content animated slideInUp'">
+                   <div v-show="sixthCardShow" @mouseover="mouseCard(1)" class="sixth-card-content animated slideInUp" :class="currentCard === 1 ? 'sixth-card-content animated fadeInUp active':'sixth-card-content animated fadeInUp'">
                         <div class="sixth-card-content-img">
                             <img v-if="currentCard === 1"  class="sixth-card-img" src="../../img/无网状态备份1.png" alt="">
                             <img v-else class="sixth-card-img" src="../../img/无网状态备份(1).png" alt="">
@@ -325,7 +325,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed,
                         </span>
                     </div>
-                    <div v-show="sixthCardShow" @mouseover="mouseCard(2)" class="sixth-card-content animated slideInUp" :class="currentCard === 2 ? 'sixth-card-content animated slideInUp active':'sixth-card-content animated slideInUp'">
+                    <div v-show="sixthCardShow" @mouseover="mouseCard(2)" class="sixth-card-content animated slideInUp" :class="currentCard === 2 ? 'sixth-card-content animated fadeInUp active':'sixth-card-content animated fadeInUp'">
                         <div class="sixth-card-content-img">
                             <img v-if="currentCard === 2"  class="sixth-card-img" src="../../img/无网状态备份1.png" alt="">
                             <img v-else class="sixth-card-img" src="../../img/无网状态备份(1).png" alt="">
@@ -335,7 +335,7 @@
                             Nunc porta erat ut lectus posuere molestie. Vestibulum risus ligula, rhoncus eleifend rhoncus sed,
                         </span>
                     </div>
-                    <div v-show="sixthCardShow" @mouseover="mouseCard(3)" class="sixth-card-content animated slideInUp" :class="currentCard === 3 ? 'sixth-card-content animated slideInUp active':'sixth-card-content animated slideInUp'">
+                    <div v-show="sixthCardShow" @mouseover="mouseCard(3)" class="sixth-card-content animated slideInUp" :class="currentCard === 3 ? 'sixth-card-content animated fadeInUp active':'sixth-card-content animated fadeInUp'">
                         <div class="sixth-card-content-img">
                             <img v-if="currentCard === 3"  class="sixth-card-img" src="../../img/无网状态备份1.png" alt="">
                             <img v-else class="sixth-card-img" src="../../img/无网状态备份(1).png" alt="">
@@ -418,6 +418,7 @@ export default {
     },
     data(){
         return{
+            firstTitleShow: true,
             secondCardShow: false,
             secondTitleShow: false,
             thirdTitleShow: false,
@@ -460,6 +461,7 @@ export default {
                 {ref:'six',index: 6}
             ]
             let refArray = [
+                {ref:'firstTitle',show:'firstTitleShow'},
                 {ref:'secondTitle',show:'secondTitleShow'},
                 {ref:'secondCard',show:'secondCardShow'},
                 {ref:'thirdTitle',show:'thirdTitleShow'},
@@ -475,27 +477,38 @@ export default {
                 {ref:'sixthCard',show:'sixthCardShow'}
             ]
             refArray.forEach((r)=>{
-                _this.gdjz(r.ref,200,()=>{
-                    _this[r.show] = true
-                    // window.console.log(r.ref)
-                })
+                _this.gdjz(r,200)
             })
             refArrayAchar.forEach((r)=>{
                 this.setAnchor(r.ref,r.index)
             })
         },
-        gdjz(div,offset,callback){
-            let dom = this.$refs[div]
+        gdjz(r,offset,callback){
+            let dom = this.$refs[r.ref]
             if(dom){
-                 var a,b,c,d;
+                 var a,b,c,d,e,f;
                 d = dom.offsetTop // 元素距离相对父级的高度，这里父级指的是body
-                a = eval(d + offset)
+                f = dom.offsetHeight //元素自身高度
+                a = eval(d + offset) 
                 b = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop //  获取窗口滚动条高度
                 c = document.documentElement.clientHeight || document.body.clientHeight // 获取浏览器可视区的高度
-                // window.console.log(a+" "+b+" "+c+" "+d)
-                if( b + c > a ) {
-                    callback && callback()
+                e = eval(b - offset)
+                if( ( b + c ) > a && !this[r.show]) {
+                    if(this[r.show]){
+                        return;
+                    }else{
+                        this[r.show] = true;
+                    }
                 }
+                if( (d + f) < b || d  > (b + c)  && this[r.show]) {
+                    if(!this[r.show]){
+                        return;
+                    }else{
+                        this[r.show] = false;
+                    }
+                    
+                }
+               
             }
         },
         selectTimer(index){
@@ -858,6 +871,11 @@ var radMin = 5,
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 92px;
+}
+.sloganeer img{
+    position: absolute;
+    /* display: none; */
 }
 .Home-Page-second-content .card{
     display: flex;

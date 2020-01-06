@@ -56,7 +56,6 @@ export default {
             }
         },
         toAnchor(index){
-            window.console.log(index)
             this.$emit('toAnchorByOffsetTop',index)
         }
     }
